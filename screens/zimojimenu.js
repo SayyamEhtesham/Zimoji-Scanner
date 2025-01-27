@@ -16,7 +16,7 @@ const scaleHeight = (size) => size * (SCREEN_HEIGHT / XD_HEIGHT);
 const ICON_SIZE = scaleWidth(26);
 const TOP_SPACING = scaleHeight(40);
 const SIDE_SPACING = scaleWidth(20);
-const MENU_ITEM_GAP = scaleHeight(30); // Added consistent gap between menu items
+const MENU_ITEM_GAP = scaleHeight(30); 
 
 const menuItems = [
     { 
@@ -62,8 +62,12 @@ const Zimojimenu = () => {
 
     const handleMenuItemPress = (id) => {
         setSelectedItem(id);
-        if (id === 'history') {
+        if (id === 'scan') {
+            navigation.navigate('Zimojitryagain'); // Navigate to the Zimojitryagain screen
+        } else if (id === 'history') {
             navigation.navigate('Zimohistory'); // Navigate to the Zimohistory screen
+        } else if (id === 'contact') {
+            navigation.navigate('Zimojicontact'); // Navigate to the Zimojicontact screen
         }
     };
 
@@ -96,7 +100,7 @@ const Zimojimenu = () => {
                             style={[ 
                                 styles.menuItemWrapper,
                                 { 
-                                    marginTop: index === 0 ? scaleHeight(20) : MENU_ITEM_GAP, // Constant gap between items
+                                    marginTop: index === 0 ? scaleHeight(20) : MENU_ITEM_GAP, 
                                     opacity: selectedItem === item.id ? 1 : 0.7,
                                 }
                             ]}>
@@ -133,7 +137,7 @@ const Zimojimenu = () => {
                     </Text>
 
                     <Text style={styles.copyrightText}>
-                        COPYRIGHT © 2024 ZIMOJI | ZIMO GROUP LIMITED.{'\n'}
+                        COPYRIGHT © 202 4 ZIMOJI | ZIMO GROUP LIMITED.{'\n'}
                         ALL RIGHTS RESERVED.
                     </Text>
 
@@ -143,7 +147,7 @@ const Zimojimenu = () => {
                         </Text>
                         <Image 
                             source={require('../assets/zimoLicense.png')}
-                            style={styles.zimoLogo}
+                            style={[styles.zimoLogo, { width: SCREEN_WIDTH * 0.25, height: SCREEN_HEIGHT * 0.04 }]}
                             resizeMode="contain"
                         />
                     </View>
@@ -222,7 +226,7 @@ const styles = StyleSheet.create({
         paddingLeft: scaleWidth(16),
     },
     activeLine: {
-        width: 2, // Reduced width to make the line thinner
+        width: 2, 
         height: '80%',
         backgroundColor: '#FFFFFF',
         position: 'absolute',
@@ -286,6 +290,7 @@ const styles = StyleSheet.create({
         height: ICON_SIZE,
         position: 'relative',
         zIndex: 3,
+        left:15,
     },
     flashIconContainer: {
         position: 'absolute',
@@ -299,7 +304,7 @@ const styles = StyleSheet.create({
         bottom: scaleHeight(30),
         zIndex: 1,
     },
-    flashIcon: {
+    flashIcon:{
         width: scaleWidth(9.78),
         height: scaleHeight(22),
         justifyContent: 'center',

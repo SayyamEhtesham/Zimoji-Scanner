@@ -6,7 +6,8 @@ import {
   StyleSheet, 
   SafeAreaView, 
   ScrollView, 
-  TouchableOpacity 
+  TouchableOpacity,
+  Dimensions 
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { BlurView } from '@react-native-community/blur';
@@ -14,47 +15,53 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 const Zimojicontactscreen = () => {
   const navigation = useNavigation();
+  const windowWidth = Dimensions.get('window').width;
+  const windowHeight = Dimensions.get('window').height;
+
+  const calculateFontSize = (baseSize) => {
+    const scaleFactor = Math.min(windowWidth / 375, windowHeight / 812);
+    return baseSize * scaleFactor;
+  };
 
   const getCommonTextStyle = () => ({
-    fontSize: wp('2.5%'),  // Scaling font size with respect to screen width
+    fontSize: calculateFontSize(12),
     fontFamily: 'Lato-Regular',
-    letterSpacing: 1.7,
+    letterSpacing: windowWidth * 0.004,
     color: '#FFFFFF',
   });
 
-  const dynamicPaddingTop = hp('12%');  // Scaling padding top with respect to screen height
+  const dynamicPaddingTop = windowHeight * 0.12;
 
   const renderActionIcons = () => (
     <View style={styles.imagesRow}>
-         <TouchableOpacity>
+      <TouchableOpacity>
         <Image 
           source={require('../assets/AddContact.png')} 
           style={styles.actionIcon} 
           resizeMode="contain" 
         />
       </TouchableOpacity>
-         <TouchableOpacity>
+      <TouchableOpacity>
         <Image 
           source={require('../assets/Callicon.png')} 
           style={styles.actionIcon} 
           resizeMode="contain" 
         />
       </TouchableOpacity>
-         <TouchableOpacity>
+      <TouchableOpacity>
         <Image 
           source={require('../assets/ContactM.png')} 
           style={styles.actionIcon} 
           resizeMode="contain" 
         />
       </TouchableOpacity>
-         <TouchableOpacity>
+      <TouchableOpacity>
         <Image 
           source={require('../assets/Location.png')} 
           style={styles.actionIcon} 
           resizeMode="contain" 
         />
       </TouchableOpacity>
-       
       <TouchableOpacity>
         <Image 
           source={require('../assets/Favourite.png')} 
@@ -83,20 +90,22 @@ const Zimojicontactscreen = () => {
           resizeMode="contain" 
         />
       </TouchableOpacity>
-      
     </View>
   );
 
   const renderUrlItem = (url, title, dateTime, isBlurred = false) => (
-    <View style={[styles.urlContainer, { marginTop: hp('1%') }]}>
+    <View style={[styles.urlContainer, { marginTop: windowHeight * 0.01 }]}>
       <View style={styles.contentContainer}>
         <View style={styles.typeContainer}>
           <Image 
             source={require('../assets/URL.png')} 
-            style={[styles.typeIcon, { width: wp('2.5%'), height: wp('2.5%') }]} 
+            style={[styles.typeIcon, { 
+              width: windowWidth * 0.025, 
+              height: windowWidth * 0.025 
+            }]} 
             resizeMode="contain"
           />
-          <Text style={[styles.urlTypeText, getCommonTextStyle(), { marginLeft: wp('2%') }]}>URL</Text>
+          <Text style={[styles.urlTypeText, getCommonTextStyle(), { marginLeft: windowWidth * 0.02 }]}>URL</Text>
         </View>
         <Text style={[styles.urlLink, getCommonTextStyle()]} numberOfLines={1}>{url}</Text>
         <Text style={[styles.urlTitle, getCommonTextStyle()]} numberOfLines={2}>{title}</Text>
@@ -115,15 +124,18 @@ const Zimojicontactscreen = () => {
   );
 
   const renderTextItem = (isBlurred = false) => (
-    <View style={[styles.urlContainer, { marginTop: hp('1%') }]}>
+    <View style={[styles.urlContainer, { marginTop: windowHeight * 0.01 }]}>
       <View style={styles.contentContainer}>
         <View style={styles.typeContainer}>
           <Image 
             source={require('../assets/Text.png')} 
-            style={[styles.typeIcon, { width: wp('2.5%'), height: wp('2.5%') }]} 
+            style={[styles.typeIcon, { 
+              width: windowWidth * 0.025, 
+              height: windowWidth * 0.025 
+            }]} 
             resizeMode="contain"
           />
-          <Text style={[styles.urlTypeText, getCommonTextStyle(), { marginLeft: wp('2%') }]}>TEXT</Text>
+          <Text style={[styles.urlTypeText, getCommonTextStyle(), { marginLeft: windowWidth * 0.02 }]}>TEXT</Text>
         </View>
         <Text 
           style={[styles.textContent, getCommonTextStyle()]}
@@ -146,15 +158,18 @@ const Zimojicontactscreen = () => {
   );
 
   const renderContactItem = (isBlurred = false) => (
-    <View style={[styles.urlContainer, { marginTop: hp('1%') }]}>
+    <View style={[styles.urlContainer, { marginTop: windowHeight * 0.01 }]}>
       <View style={styles.contentContainer}>
         <View style={styles.typeContainer}>
           <Image 
             source={require('../assets/ContactUSER.png')} 
-            style={[styles.typeIcon, { width: wp('2.5%'), height: wp('2.5%') }]} 
+            style={[styles.typeIcon, { 
+              width: windowWidth * 0.03, 
+              height: windowWidth * 0.03 
+            }]} 
             resizeMode="contain"
           />
-          <Text style={[styles.urlTypeText, getCommonTextStyle(), { marginLeft: wp('2%') }]}>CONTACT</Text>
+          <Text style={[styles.urlTypeText, getCommonTextStyle(), { marginLeft: windowWidth * 0.02 }]}>CONTACT</Text>
         </View>
         <Text style={[styles.contactName, getCommonTextStyle()]}>Michael Jackson</Text>
         <Text style={[styles.contactTitle, getCommonTextStyle()]}>ZIMO AMBASSADOR</Text>
@@ -179,10 +194,10 @@ const Zimojicontactscreen = () => {
         <View style={[styles.header, { height: dynamicPaddingTop }]}>
           <TouchableOpacity 
             style={[styles.menuButton, { 
-              left: wp('7%'), 
-              top: hp('4%'),
-              width: wp('5%'), 
-              height: hp('3%') 
+              left: windowWidth * 0.07,
+              top: windowHeight * 0.04,
+              width: windowWidth * 0.05,
+              height: windowHeight * 0.03
             }]}
             onPress={() => navigation.navigate('Zimojimenu')}
           >
@@ -194,8 +209,8 @@ const Zimojicontactscreen = () => {
           </TouchableOpacity>
 
           <View style={[styles.logoContainer, { 
-            width: wp('22%'), 
-            height: hp('3%') 
+            width: windowWidth * 0.22,
+            height: windowHeight * 0.03
           }]}>
             <Image 
               source={require('../assets/logo.png')} 
@@ -205,45 +220,74 @@ const Zimojicontactscreen = () => {
           </View>
 
           <View style={[styles.historyContainer, { 
-            left: wp('7%'), 
-            top: hp('10%') 
+            left: windowWidth * 0.07,
+            top: windowHeight * 0.1
           }]}>
             <Image 
               source={require('../assets/History.png')} 
               style={[styles.historyImage, { 
-                width: wp('5%'), 
-                height: hp('3%') 
+                width: windowWidth * 0.05,
+                height: windowHeight * 0.03
               }]} 
               resizeMode="contain" 
             />
-            <Text style={[styles.historyText, getCommonTextStyle(), { marginLeft: wp('2%') }]}>HISTORY</Text>
+            <Text style={[styles.historyText, getCommonTextStyle(), { marginLeft: windowWidth * 0.05 }]}>HISTORY</Text>
           </View>
         </View>
 
         <ScrollView 
           style={[styles.scrollContainer, { 
             paddingTop: dynamicPaddingTop,
-            marginTop: hp('3%') 
+            marginTop: windowHeight * 0.03
           }]}
           showsVerticalScrollIndicator={false}
         >
-          <View style={[styles.urlContainer, { marginTop: hp('1%') }]}>
+          <View style={[styles.urlContainer, { marginTop: windowHeight * 0.01 }]}>
             <View style={styles.contentContainer}>
-              <View style={styles.typeContainer}>
+              <View style={[styles.typeContainer, { marginBottom: windowHeight * 0.005 }]}>
                 <Image 
-                  source={require('../assets/Contact.png')} 
-                  style={[styles.typeIcon, { width: wp('2.5%'), height: wp('2.5%') }]} 
+                  source={require('../assets/ContactUSER.png')} 
+                  style={[styles.typeIcon, { 
+                    width: windowWidth * 0.025,
+                    height: windowWidth * 0.025
+                  }]} 
                   resizeMode="contain"
                 />
-                <Text style={[styles.urlTypeText, getCommonTextStyle(), { marginLeft: wp('2%') }]}>CONTACT</Text>
+                <Text style={[styles.urlTypeText, getCommonTextStyle(), { marginLeft: windowWidth * 0.02 }]}>CONTACT</Text>
               </View>
-              <Text 
-                style={[styles.textContent, getCommonTextStyle()]}
-              >
-                    Michael  jacksen           </Text>
-              <Text style={[styles.dateTime, getCommonTextStyle(), { marginTop: hp('1%'), opacity: 0.5 }]}>
-                13/09/2024 | 09:15
-              </Text>
+              <View style={styles.contactInfoContainer}>
+                <Text style={[styles.contactName, getCommonTextStyle(), { 
+                  marginBottom: windowHeight * 0.007,
+                  fontWeight: '700'
+                }]}>Michael Jackson</Text>
+                <Text style={[styles.contactTitle, getCommonTextStyle(), { 
+                  marginBottom: windowHeight * 0.007
+                }]}>ZIMO AMBASSADOR</Text>
+                <Text style={[styles.contactTitle, getCommonTextStyle(), styles.lineSpacing]}>ZIMO GROUP</Text>
+                <Text style={[styles.contactTitle, getCommonTextStyle(), styles.lineSpacing]}>
+                  University of Oxford (Oxford, United Kingdom)
+                </Text>
+                <Text style={[styles.contactDetails, getCommonTextStyle(), styles.lineSpacing]}>
+                  71-75 Shelton Street, Covent Garden, London,{"\n"}
+                  WC2H 9JQ, England, United Kingdom
+                </Text>
+                <Text style={[styles.contactDetails, getCommonTextStyle(), styles.lineSpacing]}>+447867867867</Text>
+                <Text style={[styles.contactDetails, getCommonTextStyle(), styles.lineSpacing]}>
+                  michael.jackson@zimogroup.org
+                </Text>
+                <Text style={[styles.contactDetails, getCommonTextStyle(), styles.lineSpacing]}>
+                  https://zimo.team/ambassador
+                </Text>
+                <Text style={[styles.textContent, getCommonTextStyle(), styles.lineSpacing]}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo fringilla libero, 
+                  eget congue justo. Aliquam dignissim, dui ante. Lorem ipsum dolor sit amet, consectetur 
+                  adipiscing elit. In commodo libero, eget congue justo.
+                </Text>
+                <Text style={[styles.dateTime, getCommonTextStyle(), { 
+                  marginTop: windowHeight * 0.0001,
+                  opacity: 0.5 
+                }]}>13/09/2024 | 09:15</Text>
+              </View>
             </View>
             {renderActionIcons()}
           </View>
@@ -255,6 +299,7 @@ const Zimojicontactscreen = () => {
     </SafeAreaView>
   );
 };
+
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
@@ -263,6 +308,34 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000',
+  },
+  contactInfoContainer: {
+    marginTop: hp('0.5%'),
+  },
+  lineSpacing: {
+    marginBottom: Dimensions.get('window').height * 0.015,
+    lineHeight: Dimensions.get('window').width * 0.04,
+  },
+  contactName: {
+    fontSize: wp('2.5%'),
+  },
+  contactTitle: {
+    fontSize: wp('2.5%'),
+  },
+  contactDetails: {
+    fontSize: wp('2.5%'),
+    color: '#FFFFFF',
+    opacity: 0.8
+  },
+  textContent: {
+    fontSize: wp('2.5%'),
+    paddingRight: wp('5%'),
+    marginTop: hp('1%'),
+  },
+  dateTime: {
+    fontSize: wp('2.5%'),
+    marginTop: hp('1.3%'),
+    marginBottom: hp('1.5%'),
   },
   header: {
     position: 'absolute',
@@ -274,8 +347,8 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flex: 1,
-    paddingHorizontal:30,
-    paddingEnd: 12,
+    paddingHorizontal: Dimensions.get('window').width * 0.08,
+    paddingEnd: Dimensions.get('window').width * 0.03,
   },
   menuButton: {
     position: 'absolute',
@@ -285,8 +358,8 @@ const styles = StyleSheet.create({
   logoContainer: {
     position: 'absolute',
     left: '50%',
-    transform: [{ translateX: -44 }],
-    top: 30,
+    transform: [{ translateX: -Dimensions.get('window').width * 0.11 }],
+    top: Dimensions.get('window').height * 0.037,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -300,9 +373,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   urlContainer: {
-    paddingBottom: 2,
+    paddingBottom: Dimensions.get('window').height * 0.002,
     position: 'relative',
-    marginTop: 3,
+    marginTop: Dimensions.get('window').height * 0.003,
   },
   contentContainer: {
     position: 'relative',
@@ -311,35 +384,33 @@ const styles = StyleSheet.create({
   typeContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 2,
+    marginBottom: Dimensions.get('window').height * 0.002,
   },
-  urlTypeText: {
-    marginBottom: 1,
+  urlContainer: {
+    paddingBottom: Dimensions.get('window').height * 0.002,
+    position: 'relative',
+    marginTop: Dimensions.get('window').height * 0.003,
   },
-  urlLink: {
-    marginBottom: 1,
+  contentContainer: {
+    position: 'relative',
+    overflow: 'hidden',
   },
-  urlTitle: {
-    lineHeight: 11,
-    marginBottom: 1,
-    paddingRight: 15,
+  typeContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: Dimensions.get('window').height * 0.002,
   },
-  dateTime: {
-    marginTop: 4,
-    marginBottom: 6,
-    color: '#FFFFFF',
+  imagesRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginTop: Dimensions.get('window').height * 0.009,
+    marginBottom: Dimensions.get('window').height * 0.003,
+    zIndex: 3,
   },
-  textContent: {
-    lineHeight: 12,
-    marginBottom: -1,
-    paddingRight: 26,
-    marginTop: 4,
-  },
-  contactName: {
-    marginBottom: 1,
-  },
-  contactTitle: {
-    marginBottom: 1,
+  actionIcon: {
+    width: Dimensions.get('window').width * 0.05,
+    height: Dimensions.get('window').width * 0.058,
+    marginRight: Dimensions.get('window').width * 0.058,
   },
   contentBlur: {
     position: 'absolute',
@@ -350,24 +421,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
     zIndex: 2,
   },
-  imagesRow: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    marginTop: 9,
-    marginBottom: 3,
-    zIndex: 3,
-  },
-  actionIcon: {
-    width: 19,
-    height: 22,
-    marginRight: 22,
-  },
-  historyText: {
-    color: '#FFFFFF',
-  },
   typeIcon: {
-    width: 10,
-    height: 10,
+    width: Dimensions.get('window').width * 0.026,
+    height: Dimensions.get('window').width * 0.026,
   }
 });
 

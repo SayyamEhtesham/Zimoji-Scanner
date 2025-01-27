@@ -17,7 +17,7 @@ const ZimojiScanner = () => {
         {/* Middle Image */}
         <Image
           source={require('../assets/logo.png')}
-          style={[styles.middleImage, { width: width * 0.4, height: height * 0.2 }]} // Make the logo size responsive
+          style={[styles.middleImage, { width: width * 0.4, height: height * 0.2 }]} 
           resizeMode="contain"
         />
 
@@ -25,7 +25,7 @@ const ZimojiScanner = () => {
         <View style={styles.bottomLogoContainer}>
           <Image
             source={require('../assets/zimoLicense.png')}
-            style={[styles.bottomLogo, { width: width * 0.25, height: height * 0.04 }]} // Make the license image size responsive
+            style={[styles.bottomLogo, { width: width * 0.25, height: height * 0.04 }]} 
             resizeMode="contain"
           />
         </View>

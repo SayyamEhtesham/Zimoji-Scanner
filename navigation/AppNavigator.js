@@ -11,6 +11,10 @@ import Zimojihistory from '../screens/zimojihistory';
 import Zimojihistoryurl from '../screens/zimojihistoryurl';
 import Zimojitextscreen from '../screens/zimojitextscreen';
 import Zimojicontactscreen from '../screens/zimojicontactscreen';
+import Zimojitryagain from '../screens/zimojitryagain';
+import Zimojicontact from '../screens/zimojicontact';
+import Zimojiwhatsapp from '../screens/zimojiwhatsapp';
+import Zimojitelegram from '../screens/zimojitelegram';
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
@@ -60,6 +64,26 @@ const AppNavigator = () => {
         <Stack.Screen
           name="Zimojicontactscreen"  
           component={Zimojicontactscreen}
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen
+          name="Zimojitryagain"  
+          component={Zimojitryagain}
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen
+          name="Zimojicontact"  
+          component={Zimojicontact}
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen
+          name="Zimojiwhatsapp"  
+          component={Zimojiwhatsapp}
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen
+          name="Zimojitelegram"  
+          component={Zimojitelegram}
           options={{ headerShown: false }} 
         />
       </Stack.Navigator>

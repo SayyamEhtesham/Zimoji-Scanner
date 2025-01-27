@@ -16,13 +16,13 @@ const Zimojitextscreen = () => {
   const navigation = useNavigation();
 
   const getCommonTextStyle = () => ({
-    fontSize: wp('2.5%'),  // Scaling font size with respect to screen width
+    fontSize: wp('3.5%'),  
     fontFamily: 'Lato-Regular',
     letterSpacing: 1.7,
     color: '#FFFFFF',
   });
 
-  const dynamicPaddingTop = hp('12%');  // Scaling padding top with respect to screen height
+  const dynamicPaddingTop = hp('12%');  
 
   const renderActionIcons = () => (
     <View style={styles.imagesRow}>
@@ -186,7 +186,7 @@ const Zimojitextscreen = () => {
               }]} 
               resizeMode="contain" 
             />
-            <Text style={[styles.historyText, getCommonTextStyle(), { marginLeft: wp('2%') }]}>HISTORY</Text>
+            <Text style={[styles.historyText, { fontSize: 12, color: '#FFFFFF' }, { marginLeft: wp('5%') }]}>HISTORY</Text>
           </View>
         </View>
 
@@ -209,7 +209,7 @@ const Zimojitextscreen = () => {
               </View>
               <Text 
                 style={[styles.textContent, getCommonTextStyle()]}
-                numberOfLines={11}
+                numberOfLines={13}
               >
                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo fringilla libero, eget congue justo. Aliquam dignissim, libero sit amet ultrices pharetra, libero neque rhoncus nisl, sed tempor diam nisl et ligula. Praesent gravida, magna eget hendrerit dignissim, dui ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo fringilla libero, eget congue justo. Aliquam dignissim, libero sit amet ultrices pharetra, libero neque rhoncus nisl, sed tempor diam nisl et ligula. Praesent gravida, magna eget hendrerit dignissim, dui ante.
               </Text>
@@ -240,6 +240,7 @@ const Zimojitextscreen = () => {
     </SafeAreaView>
   );
 };
+
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
@@ -259,7 +260,7 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flex: 1,
-    paddingHorizontal:30,
+    paddingHorizontal: 30,
     paddingEnd: 12,
   },
   menuButton: {
@@ -284,6 +285,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  
   urlContainer: {
     paddingBottom: 2,
     position: 'relative',
@@ -329,10 +331,10 @@ const styles = StyleSheet.create({
   contentBlur: {
     position: 'absolute',
     top: 0,
-    left: -50,
-    right: -50,
+    left: -40,
+    right: -40,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+    backgroundColor: 'rgba(0, 0, 0.1, 0.2)',
     zIndex: 2,
   },
   imagesRow: {
@@ -349,7 +351,9 @@ const styles = StyleSheet.create({
   },
   historyText: {
     color: '#FFFFFF',
+    fontSize: 12, 
   },
+ 
   typeIcon: {
     width: 10,
     height: 10,

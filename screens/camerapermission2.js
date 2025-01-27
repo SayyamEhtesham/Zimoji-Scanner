@@ -110,7 +110,7 @@ const CameraPermissionScreen1 = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF', // Changed background color to white
+    backgroundColor: '#FFFFFF', 
     alignItems: 'center',
   },
   logoContainer: {
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   cameraIcon: {
     width: width * 0.12,
     height: width * 0.12,
-    tintColor: '#000000', // Adjusted to black for visibility on white background
+    tintColor: '#000000', 
   },
   contentContainer: {
     flex: 1,
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     marginTop: height * 0.03,
   },
   title: {
-    color: '#000000', // Adjusted text color to black
+    color: '#000000',
     fontSize: 13, 
     letterSpacing: 4.5,
     lineHeight: 26,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     marginBottom: height * 0.025,
   },
   description: {
-    color: '#000000', // Adjusted text color to black
+    color: '#000000', 
     fontSize: 10, 
     fontFamily: 'Lato-Regular',
     letterSpacing: 2,
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     height: height * 0.022,
   },
   footer: {
-    color: '#000000', // Adjusted text color to black
+    color: '#000000', 
     fontSize: 11, 
     fontFamily: 'Lato-Regular',
     textAlign: 'center',
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
   },
   bold: {
     fontWeight: 'bold',
-    color: '#000000', // Adjusted bold text color to black
+    color: '#000000', 
   },
   bottomLogoContainer: {
     width: '100%',

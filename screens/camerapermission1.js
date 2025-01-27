@@ -8,7 +8,6 @@ const CameraPermissionScreen1 = () => {
 
   return (
     <View style={styles.container}>
-      {/* Top Logo */}
       <View style={styles.logoContainer}>
         <Image 
           source={require('../assets/logo.png')} 
@@ -17,7 +16,6 @@ const CameraPermissionScreen1 = () => {
         />
       </View>
 
-      {/* Camera Icon */}
       <View style={styles.cameraIconContainer}>
         <Image 
           source={require('../assets/Camera.png')} 
@@ -26,7 +24,6 @@ const CameraPermissionScreen1 = () => {
         />
       </View>
 
-      {/* Main Content */}
       <View style={styles.contentContainer}>
         <Text style={styles.title}>
         <Text style={styles.bold}>CAMERA ACCESS IS REQUIRED</Text>
@@ -50,7 +47,6 @@ const CameraPermissionScreen1 = () => {
           </Text>
         </View>
 
-        {/* Scan Icon */}
         <View style={styles.scanIconContainer}>
           <Image 
             source={require('../assets/scanIcon.png')} 
@@ -68,7 +64,6 @@ const CameraPermissionScreen1 = () => {
           </Text>
         </View>
 
-        {/* Buttons */}
         <View style={styles.buttonContainer}>
           <TouchableOpacity 
             style={styles.button}
@@ -98,7 +93,6 @@ const CameraPermissionScreen1 = () => {
         </Text>
       </View>
 
-      {/* Bottom Logo */}
       <View style={styles.bottomLogoContainer}>
         <Image 
           source={require('../assets/zimoLicense.png')} 
@@ -146,8 +140,8 @@ const styles = StyleSheet.create({
   title: {
     color: 'white',
     fontSize: 13, 
-    letterSpacing: 4.5, // Adjust as needed to match 154 character spacing in XD
-    lineHeight: 26, // Matches 26 line spacing in XD
+    letterSpacing: 4.5, 
+    lineHeight: 26, 
     marginBottom: height * 0.03,
     fontFamily: 'Lato-Regular',
     textTransform: 'uppercase',

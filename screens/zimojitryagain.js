@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Image, TouchableOpacity, StyleSheet, SafeAreaView, Dimensions } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { View, Image, TouchableOpacity, StyleSheet, SafeAreaView, Dimensions, Animated, Easing } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -10,19 +10,44 @@ const scaleHeight = SCREEN_HEIGHT / 893;
 const scaleSize = (size) => size * scaleWidth;
 const scaleVertical = (size) => size * scaleHeight;
 
-const Zimojiscannerpage = () => {
+const Zimojitryagain = () => {
   const navigation = useNavigation();
 
-  const increasedWidth = scaleSize(150);
-  const increasedHeight = scaleSize(300);
+  // Adjust the size of the "Try Again" button
+  const tryAgainWidth = scaleSize(250);
+  const tryAgainHeight = scaleSize(125);
 
-  const centerLeft = (SCREEN_WIDTH - increasedWidth) / 2;
-  const centerTop = (SCREEN_HEIGHT - increasedHeight - scaleVertical(60)) / 2;
+  // Center the "Try Again" button
+  const centerLeft = (SCREEN_WIDTH - tryAgainWidth) / 2;
+  const centerTop = (SCREEN_HEIGHT - tryAgainHeight) / 2;
+
+  // Animation setup
+  const animatedValue = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    // Animated sequence for top-to-center animation
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 1000, // 1 second animation
+      easing: Easing.out(Easing.cubic), // Smooth easing effect
+      useNativeDriver: true
+    }).start();
+  }, []);
+
+  // Interpolate animation values
+  const translateY = animatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [-SCREEN_HEIGHT, centerTop] // Start from top of screen
+  });
+
+  const opacity = animatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 1] // Fade in effect
+  });
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-
         <TouchableOpacity 
           style={[styles.iconBase, { left: scaleSize(30), top: scaleVertical(30), width: scaleSize(22), height: scaleSize(22) }]}
           onPress={() => navigation.navigate('Zimojimenu')}
@@ -40,16 +65,26 @@ const Zimojiscannerpage = () => {
           <Image source={require('../assets/Flashoff.png')} style={styles.fullSize} resizeMode="contain" />
         </TouchableOpacity>
 
-        <View style={[styles.barContainer, { left: centerLeft, top: centerTop, width: increasedWidth, height: increasedHeight }]}>
-          <Image source={require('../assets/ZimojiWhatsapp.png')} style={{ width: increasedWidth, height: increasedHeight }} resizeMode="contain" />
-        </View>
+        <Animated.View 
+          style={[
+            styles.tryAgainContainer, 
+            { 
+              left: centerLeft, 
+              width: tryAgainWidth, 
+              height: tryAgainHeight,
+              transform: [{ translateY }],
+              opacity
+            }
+          ]}
+        >
+          <Image source={require('../assets/TryAgain.png')} style={styles.fullSize} resizeMode="contain" />
+        </Animated.View>
 
         <TouchableOpacity 
           style={[styles.iconBase, { right: scaleSize(30), bottom: scaleSize(30), width: scaleSize(22), height: scaleSize(22) }]}
         >
           <Image source={require('../assets/FlipCamera.png')} style={styles.fullSize} resizeMode="contain" />
         </TouchableOpacity>
-
       </View>
     </SafeAreaView>
   );
@@ -75,15 +110,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  barContainer: {
+  tryAgainContainer: {
     position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
   },
   fullSize: {
-    width: '130%',
+    width: '100%',
     height: '100%',
   },
 });
 
-export default Zimojiscannerpage;
+export default Zimojitryagain;

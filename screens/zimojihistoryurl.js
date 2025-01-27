@@ -15,7 +15,6 @@ const Zimojihistoryurl = () => {
   const navigation = useNavigation();
   const { width, height } = useWindowDimensions();
   
-  // Scale factor calculation based on screen dimensions
   const getScaleFactor = () => {
     const baseWidth = 414; 
     const baseHeight = 893; 
@@ -29,9 +28,8 @@ const Zimojihistoryurl = () => {
   const scaleSize = (size) => size * scale.width;
   const scaleVertical = (size) => size * scale.height;
 
-  // Original text style preserved
   const getCommonTextStyle = () => ({
-    fontSize: 9,
+    fontSize: 12,
     fontFamily: 'Lato-Regular',
     letterSpacing: 1.5,
     color: '#FFFFFF',
@@ -84,7 +82,7 @@ const Zimojihistoryurl = () => {
       </View>
       <Text 
         style={[styles.textContent, getCommonTextStyle()]}
-        numberOfLines={4}
+        numberOfLines={3}
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In commodo fringilla libero, eget congue justo. Aliquam dignissim, libero sit amet ultrices eleifend, libero neque gravida eros, in facilisis orci velit at nisl.
       </Text>
@@ -160,7 +158,7 @@ const Zimojihistoryurl = () => {
 
         <View style={[styles.historyContainer, { 
                     left: 30, 
-                    top: scaleVertical(90) // Reduced from 90 to bring history closer to content
+                    top: scaleVertical(90) 
                   }]}>
                     <Image 
                       source={require('../assets/History.png')} 
@@ -170,7 +168,7 @@ const Zimojihistoryurl = () => {
                       }]} 
                       resizeMode="contain" 
                     />
-                    <Text style={[styles.historyText, getCommonTextStyle(), { marginLeft: 8 }]}>HISTORY</Text>
+                    <Text style={[styles.historyText, getCommonTextStyle(), { marginLeft: 16 }]}>HISTORY</Text>
                   </View>
         </View>
 
@@ -180,18 +178,13 @@ const Zimojihistoryurl = () => {
         >
           {renderUrlItem(
             'https://ztfr.org',
-            'ZITRANSFER® | ZTFR® | ZTFRX® | Send Large Files |\nShare Photos | Storage | Up to 1TB | FREE',
+
+            'ZITRANSFER® | ZTFR® | ZTFRX® | Send Large Files |Share Photos | Storage | Up to 1TB | FREE',
             '16/09/2024 | 09:10',
             true,
             false
           )}
-          {renderUrlItem(
-            'https://ztfr.org',
-            'ZITRANSFER® | ZTFR® | ZTFRX® | Send Large Files |\nShare Photos | Storage | Up to 1TB | FREE',
-            '15/09/2024 | 17:23',
-            false,
-            true
-          )}
+          
           {renderUrlItem(
             'https://zimomeet.com',
             'ZIMOMEET® | ZM® | Premium Video Meetings | Instant\nMeetings | Share Videos | No Registration | Free-to-use\nand Unlimited',
@@ -234,6 +227,7 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
     paddingHorizontal: 30,
+    paddingVertical:25,
     marginTop:-2,
   },
   menuButton: {
@@ -273,7 +267,8 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   urlLink: {
-    marginBottom: 2,
+    marginBottom: 12,
+    
   },
   urlTitle: {
     lineHeight: 12,
@@ -282,7 +277,7 @@ const styles = StyleSheet.create({
   },
   dateTime: {
     marginTop: 6,
-    marginBottom: 10,
+    marginBottom: 8,
     color: '#FFFFFF',
   },
   textContent: {
