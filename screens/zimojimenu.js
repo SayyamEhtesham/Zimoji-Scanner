@@ -63,11 +63,11 @@ const Zimojimenu = () => {
     const handleMenuItemPress = (id) => {
         setSelectedItem(id);
         if (id === 'scan') {
-            navigation.navigate('Zimojitryagain'); // Navigate to the Zimojitryagain screen
+            navigation.navigate('Zimojitryagain'); // Navigate to  Zimojitryagain 
         } else if (id === 'history') {
-            navigation.navigate('Zimohistory'); // Navigate to the Zimohistory screen
+            navigation.navigate('Zimohistory'); // Navigate to Zimohistory 
         } else if (id === 'contact') {
-            navigation.navigate('Zimojicontact'); // Navigate to the Zimojicontact screen
+            navigation.navigate('Zimojicontact'); // Navigate to Zimojicontact 
         }
     };
 
@@ -75,7 +75,6 @@ const Zimojimenu = () => {
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.outerOverlay} />
 
-            {/* Drawer Container */}
             <View style={styles.drawerContainer}>
                 {/* Logo Container aligned with Flash Icon */}
                 <View style={styles.headerContainer}>
@@ -154,7 +153,7 @@ const Zimojimenu = () => {
                 </View>
             </View>
 
-            {/* Top Right Icon */}
+            {/* Flashoff icon */}
             <View style={styles.flashIconContainer}>
                 <TouchableOpacity style={styles.flashIcon}>
                     <Image
@@ -165,7 +164,7 @@ const Zimojimenu = () => {
                 </TouchableOpacity>
             </View>
 
-            {/* Bottom Right Icon */}
+            {/* Flipcamera icon */}
             <View style={styles.flipCameraIconContainer}>
                 <TouchableOpacity style={styles.flipCameraIcon}>
                     <Image

@@ -32,14 +32,14 @@ const Zimojitelegram = () => {
   const { width: scaleWidth, height: scaleHeight } = getScaleFactor();
 
   const getCommonTextStyle = () => ({
-    fontSize: 12 * scaleWidth, // Responsive font size
+    fontSize: 12 * scaleWidth, 
     fontFamily: 'Lato-Regular',
     letterSpacing: 1.5,
     color: '#FFFFFF',
   });
 
   const getResponsiveFontSize = (baseSize) => {
-    const scaleFactor = windowWidth / 414; // Assuming 414 is the base width
+    const scaleFactor = windowWidth / 414; 
     return Math.round(baseSize * scaleFactor);
   };
 
@@ -54,16 +54,15 @@ const Zimojitelegram = () => {
           reducedTransparencyFallbackColor="black"
         />
 
-        {/* Additional Image Above the Blur - Centered on X Axis */}
         <View style={[styles.additionalImageContainer, { 
           position: 'absolute', 
-          left: (windowWidth - (300 * scaleWidth)) / 2, // Centering the image
+          left: (windowWidth - (300 * scaleWidth)) / 2,
           top: 160 * scaleHeight, 
           width: 300 * scaleWidth, 
           height: 316 * scaleHeight 
         }]}>
           <Image 
-            source={require('../assets/ZIMOJITG.png')} // Replace with your image path
+            source={require('../assets/ZIMOJITG.png')} 
             style={styles.fullSize} 
             resizeMode="contain" 
           />
@@ -78,7 +77,7 @@ const Zimojitelegram = () => {
           height: 100 * scaleHeight 
         }]}>
           <Image 
-            source={require('../assets/TG.png')} // Replace with your new image path
+            source={require('../assets/TG.png')} 
             style={styles.fullSize} 
             resizeMode="contain" 
           />
@@ -114,11 +113,11 @@ const Zimojitelegram = () => {
           </View>
         </View>
 
-        {/* New Logo up on the*/}
+        {/* new logoup on the blur effect*/}
         <View style={[styles.newView, { 
-          width: scaleWidth * 88.17, // Set width similar to original logo
-          height: scaleHeight * 30,  // Set height similar to original logo
-          top: scaleHeight * 30,      // Adjust position as needed
+          width: scaleWidth * 88.17, 
+          height: scaleHeight * 30,  
+          top: scaleHeight * 30,      
         }]}>
           <Image 
             source={require('../assets/logo.png')} 
@@ -127,7 +126,6 @@ const Zimojitelegram = () => {
           />
         </View>
 
-        {/* Contact Section */}
         <View style={[styles.contactContainer, { 
           left: 30 * scaleWidth, 
           top: scaleHeight * 90 
@@ -185,13 +183,13 @@ const Zimojitelegram = () => {
           <Text style={[
             getCommonTextStyle(), 
             styles.messageText,
-            { fontSize: getResponsiveFontSize(12) } // Make the MESSAGE text responsive
+            { fontSize: getResponsiveFontSize(12) } 
           ]}>
             MESSAGE
           </Text>
         </TouchableOpacity>
 
-        {/* Bottom Logo and Copyright Text Above Blur */}
+        {/* license and copyright text above blur */}
         <View style={styles.bottomLogoContainer}>
           <Image 
             source={require('../assets/zimoLicense.png')} 
@@ -247,7 +245,7 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    zIndex: 2, // Ensure it's above other content
+    zIndex: 2, 
   },
   header: {
     position: 'absolute',
@@ -269,13 +267,13 @@ const styles = StyleSheet.create({
     top: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 3, // Ensure logo is above the blur
+    zIndex: 3, 
   },
   newView: {
     position: 'absolute',
     left: '50%',
     transform: [{ translateX: -44 }],
-    zIndex: 4, // Ensure this new logo is above the blur
+    zIndex: 4, 
   },
   fullSize: {
     width: '100%',
@@ -283,7 +281,7 @@ const styles = StyleSheet.create({
   },
   additionalImageContainer: {
     position: 'absolute',
-    zIndex: 5, // Ensure the image is above the blur
+    zIndex: 5, 
   },
   newImageContainer: {
     position: 'absolute',
@@ -291,7 +289,7 @@ const styles = StyleSheet.create({
     top: 602,
     width: 99.5,
     height: 100,
-    zIndex: 6, // Ensure the new image is above the blur
+    zIndex: 6, 
   },
   contactContainer: {
     position: 'absolute',
@@ -345,7 +343,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: Platform.OS === 'ios' ? height * 0.05 : height * 0.03,
     paddingHorizontal: width * 0.05,
-    zIndex: 7, // Ensure it's above the blur
+    zIndex: 7, 
   },
   bottomLogo: {
     width: width * 0.25,

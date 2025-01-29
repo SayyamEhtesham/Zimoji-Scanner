@@ -17,7 +17,6 @@ const Zimojitryagain = () => {
   const tryAgainWidth = scaleSize(250);
   const tryAgainHeight = scaleSize(125);
 
-  // Center the "Try Again" button
   const centerLeft = (SCREEN_WIDTH - tryAgainWidth) / 2;
   const centerTop = (SCREEN_HEIGHT - tryAgainHeight) / 2;
 
@@ -25,24 +24,22 @@ const Zimojitryagain = () => {
   const animatedValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    // Animated sequence for top-to-center animation
     Animated.timing(animatedValue, {
       toValue: 1,
-      duration: 1000, // 1 second animation
-      easing: Easing.out(Easing.cubic), // Smooth easing effect
+      duration: 1000, 
+      easing: Easing.out(Easing.cubic), 
       useNativeDriver: true
     }).start();
   }, []);
 
-  // Interpolate animation values
   const translateY = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [-SCREEN_HEIGHT, centerTop] // Start from top of screen
+    outputRange: [-SCREEN_HEIGHT, centerTop] 
   });
 
   const opacity = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, 1] // Fade in effect
+    outputRange: [0, 1] 
   });
 
   return (

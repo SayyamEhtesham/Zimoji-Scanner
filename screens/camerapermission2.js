@@ -80,7 +80,7 @@ const CameraPermissionScreen1 = () => {
           </TouchableOpacity>
           <TouchableOpacity 
             style={styles.button}
-            // Removed navigation onPress
+            
           >
             <Image 
               source={require('../assets/AllowL.png')} 

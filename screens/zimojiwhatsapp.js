@@ -32,14 +32,14 @@ const Zimojiwhatsapp = () => {
   const { width: scaleWidth, height: scaleHeight } = getScaleFactor();
 
   const getCommonTextStyle = () => ({
-    fontSize: 12 * scaleWidth, // Responsive font size
+    fontSize: 12 * scaleWidth, 
     fontFamily: 'Lato-Regular',
     letterSpacing: 1.5,
     color: '#FFFFFF',
   });
 
   const getResponsiveFontSize = (baseSize) => {
-    const scaleFactor = windowWidth / 414; // Assuming 414 is the base width
+    const scaleFactor = windowWidth / 414; 
     return Math.round(baseSize * scaleFactor);
   };
 
@@ -54,22 +54,20 @@ const Zimojiwhatsapp = () => {
           reducedTransparencyFallbackColor="black"
         />
 
-        {/* Additional Image Above the Blur - Centered on X Axis */}
         <View style={[styles.additionalImageContainer, { 
           position: 'absolute', 
-          left: (windowWidth - (300 * scaleWidth)) / 2, // Centering the image
+          left: (windowWidth - (300 * scaleWidth)) / 2, 
           top: 160 * scaleHeight, 
           width: 300 * scaleWidth, 
           height: 316 * scaleHeight 
         }]}>
           <Image 
-            source={require('../assets/ZimojiWhatsapp.png')} // Replace with your image path
+            source={require('../assets/ZimojiWhatsapp.png')} 
             style={styles.fullSize} 
             resizeMode="contain" 
           />
         </View>
 
-        {/* New Image to Add Above the Blur */}
         <View style={[styles.newImageContainer, { 
           position: 'absolute', 
           left: 157.23 * scaleWidth, 
@@ -78,7 +76,7 @@ const Zimojiwhatsapp = () => {
           height: 100 * scaleHeight 
         }]}>
           <Image 
-            source={require('../assets/WhatsApp.png')} // Replace with your new image path
+            source={require('../assets/WhatsApp.png')} 
             style={styles.fullSize} 
             resizeMode="contain" 
           />
@@ -114,11 +112,10 @@ const Zimojiwhatsapp = () => {
           </View>
         </View>
 
-        {/* New Logo up on the*/}
         <View style={[styles.newView, { 
-          width: scaleWidth * 88.17, // Set width similar to original logo
-          height: scaleHeight * 30,  // Set height similar to original logo
-          top: scaleHeight * 30,      // Adjust position as needed
+          width: scaleWidth * 88.17, 
+          height: scaleHeight * 30,  
+          top: scaleHeight * 30,      
         }]}>
           <Image 
             source={require('../assets/logo.png')} 
@@ -185,7 +182,7 @@ const Zimojiwhatsapp = () => {
           <Text style={[
             getCommonTextStyle(), 
             styles.messageText,
-            { fontSize: getResponsiveFontSize(12) } // Make the MESSAGE text responsive
+            { fontSize: getResponsiveFontSize(12) } 
           ]}>
             MESSAGE
           </Text>
@@ -205,7 +202,6 @@ const Zimojiwhatsapp = () => {
           </View>
         </View>
 
-        {/* L and Copyright Text Above Blur */}
         <View style={styles.sendMessageContainer}>
           <Text style={[styles.sendMessageText, getCommonTextStyle()]}>SEND MESSAGE</Text>
           <View style={styles.sendMessageIconsContainer}>

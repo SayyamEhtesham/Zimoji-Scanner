@@ -14,6 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const ActionRow = ({ scaleSize, isVisible, onClose, style, onCsvPress, showCsvActions, onEditPress, showEditActions, onMetadataPress, showMetadataActions, onTextPress, showTextActions }) => {
+  //first overlay
   const actionIcons = [
     { source: require('../assets/Delete.png'), name: 'Delete' },
     { source: require('../assets/txt.png'), name: 'text' }, 
@@ -23,21 +24,25 @@ const ActionRow = ({ scaleSize, isVisible, onClose, style, onCsvPress, showCsvAc
     { source: require('../assets/Bookmark.png'), name: 'BookMark' },
     { source: require('../assets/Metadata.png'), name: 'Metadata' },
   ];
-
+// second overlay for csv icon
   const csvActionIcons = [
     { source: require('../assets/SVC.png'), name: 'CSV Action 1' },
     { source: require('../assets/ShareIcon.png'), name: 'CSV Action 2' },
     { source: require('../assets/DownloadIcon.png'), name: 'CSV Action 3' },
   ];
 
-  const metadataActionIcons = [];
+  const metadataActionIcons = [
 
+  ];
+// third overlay for txticon
   const textActionIcons = [
     { source: require('../assets/txt.png'), name: 'CSV Action 1' },
     { source: require('../assets/ShareIcon.png'), name: 'CSV Action 2' },
     { source: require('../assets/DownloadIcon.png'), name: 'CSV Action 3' },
   ];
 
+
+  // condition when particular icon show
   if (!isVisible) return null;
 
   return (
@@ -49,13 +54,13 @@ const ActionRow = ({ scaleSize, isVisible, onClose, style, onCsvPress, showCsvAc
             style={[styles.actionButton, { padding: wp('2%') }]}
             onPress={() => {
               if (icon.name === 'scv') {
-                onCsvPress(); 
+                onCsvPress(); // open csvicon
               } else if (icon.name === 'text') {
                 onTextPress(); 
               } else if (icon.name === 'Edit') {
                 onEditPress(); 
               } else if (icon.name === 'Metadata') {
-                onMetadataPress(); // Trigger the Metadata action
+                onMetadataPress(); 
               } else {
                 console.log(`${icon.name} pressed`);
                 onClose();
@@ -79,6 +84,7 @@ const ActionRow = ({ scaleSize, isVisible, onClose, style, onCsvPress, showCsvAc
           </TouchableOpacity>
         ))}
       </View>
+      {/*This is for metadata */}
       {showMetadataActions && (
         <TouchableOpacity style={styles.metadataDescription} onPress={onClose}>
           <Image
@@ -114,7 +120,7 @@ const EditActionRow = ({ scaleSize, isVisible, onClose }) => {
           style={[styles.actionButton, { padding: wp('2%'), marginRight: wp('2%'), marginTop: hp('-2%') }]} 
           onPress={() => {
             console.log(`${editActionIcons[0].name} pressed`);
-            onClose(); // Close the overlay
+            onClose(); // Closing  overlay
           }}
         >
           <Image
